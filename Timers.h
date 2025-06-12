@@ -23,6 +23,11 @@ public:
     timers[id].interval = 0;
     initialized[id] = true;
   }
+  
+  static void addTimerAndStart(uint8_t id, uint32_t interval, bool isCyclic = false) {
+    addTimer(id, isCyclic);
+    start(id, interval);
+  }
 
   static void update() {
     uint32_t current = millis();
