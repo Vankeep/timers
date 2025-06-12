@@ -51,7 +51,7 @@ public:
     timers[id].isDone = false;
   }
 
-  static void reset(uint8_t id) {
+  static void resetAndStop(uint8_t id) {
     if (id >= MAX_TIMERS || !initialized[id]) return;
     timers[id].isActive = false;
     timers[id].isDone = false;
@@ -61,7 +61,7 @@ public:
 
   static void restart(uint8_t id, uint32_t interval) {
     if (id >= MAX_TIMERS || !initialized[id]) return;
-    reset(id);
+    resetAndStop(id);
     start(id, interval);
   }
 
